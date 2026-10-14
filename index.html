@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpendWise - Budget Planner</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>SpendWise</h1>
+            <p>Personal Finance & Budget Planner</p>
+        </header>
+
+        <section class="card">
+            <h2>Budget Setup</h2>
+
+            <form id="setup-form">
+                <label for="person-name">Your Name</label>
+                <input type="text" id="person-name" placeholder="Enter your name">
+
+                <label for="income-mode">Income Type</label>
+                <select id="income-mode">
+                    <option value="monthly">Regular Monthly Income</option>
+                    <option value="lump">One-Time Amount</option>
+                </select>
+
+                <label for="starting-money" id="money-label">
+                    Monthly Income (₹)
+                </label>
+                <input type="number" id="starting-money" min="0.01"
+                       step="0.01" placeholder="30000" required>
+
+                <label for="start-date">Start Date</label>
+                <input type="date" id="start-date" required>
+
+                <label for="duration">Duration</label>
+                <select id="duration">
+                    <option value="1">1 Month</option>
+                    <option value="2">2 Months</option>
+                    <option value="3" selected>3 Months</option>
+                    <option value="6">6 Months</option>
+                    <option value="9">9 Months</option>
+                    <option value="12">12 Months</option>
+                </select>
+
+                <label for="fixed-costs">Total Fixed Expenses (₹)</label>
+                <input type="number" id="fixed-costs" min="0"
+                       step="0.01" value="0" required>
+
+                <label for="savings">Savings / Reserve Target (₹)</label>
+                <input type="number" id="savings" min="0"
+                       step="0.01" value="0" required>
+
+                <button type="submit">Save Budget</button>
+            </form>
+        </section>
+
+        <section class="dashboard">
+            <div class="card balance">
+                <h3>Available Balance</h3>
+                <p id="balance">₹0.00</p>
+            </div>
+
+            <div class="card">
+                <h3>Expected Income</h3>
+                <p id="income">₹0.00</p>
+            </div>
+
+            <div class="card">
+                <h3>Total Spent</h3>
+                <p id="spent">₹0.00</p>
+            </div>
+
+            <div class="card highlight">
+                <h3>Suggested Daily Budget</h3>
+                <p id="daily-budget">₹0.00</p>
+                <small id="days-left">Set up your budget first.</small>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Add Transaction</h2>
+
+            <form id="transaction-form">
+                <label for="type">Transaction Type</label>
+                <select id="type">
+                    <option value="expense">Expense</option>
+                    <option value="income">Additional Income</option>
+                </select>
+
+                <label for="description">Description</label>
+                <input type="text" id="description"
+                       placeholder="Food, travel, salary..." required>
+
+                <label for="amount">Amount (₹)</label>
+                <input type="number" id="amount" min="0.01"
+                       step="0.01" required>
+
+                <label for="category">Category</label>
+                <select id="category">
+                    <option>Food</option>
+                    <option>Transport</option>
+                    <option>Bills</option>
+                    <option>Shopping</option>
+                    <option>Education</option>
+                    <option>Health</option>
+                    <option>Entertainment</option>
+                    <option>Salary</option>
+                    <option>Other</option>
+                </select>
+
+                <label for="transaction-date">Date</label>
+                <input type="date" id="transaction-date" required>
+
+                <button type="submit">Add Transaction</button>
+            </form>
+        </section>
+
+        <section class="card">
+            <h2>Budget Status</h2>
+            <div class="progress-track">
+                <div id="progress"></div>
+            </div>
+            <p id="status">Set up your budget to see your status.</p>
+            <h3>Budget Assistant</h3>
+            <p id="advice">
+                Your spending suggestions will appear here.
+            </p>
+        </section>
+
+        <section class="card">
+            <h2>Transaction History</h2>
+            <button id="export-button" type="button">Export CSV</button>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th>Date</th>
+                            <th>Type</th>
+                            <th>Amount</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transaction-list"></tbody>
+                </table>
+            </div>
+
+            <button id="clear-button" class="danger" type="button">
+                Clear All Data
+            </button>
+        </section>
+
+        <footer>
+            <p>SpendWise | Plan today. Prepare for tomorrow.</p>
+        </footer>
+    </div>
+</body>
+</html>
